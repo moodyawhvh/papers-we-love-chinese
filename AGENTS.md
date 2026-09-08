@@ -1,58 +1,37 @@
+> 🌐 本文档由 [papers-we-love/papers-we-love](https://github.com/papers-we-love/papers-we-love) 翻译,英文原版见原项目。
+
 # AGENTS.md
 
-## Repository purpose
+## 仓库用途
 
-Papers We Love is a curated directory of academic computer-science papers.
-Most changes add or correct entries in topic-level `README.md` files; a smaller
-set of papers is hosted in the repository. This is not an application project:
-there is no package manager, build, or unit-test suite.
+Papers We Love 是一个精选的计算机科学学术论文目录。大多数改动是在各主题目录的 `README.md` 中新增或修正条目;少部分论文 PDF 直接托管在本仓库中。这不是一个应用程序项目:没有包管理器、构建流程或单元测试套件。
 
-## Layout
+## 目录结构
 
-- The root `README.md` explains the collection and points contributors to the
-  project policies.
-- Each topic directory owns a `README.md` index. Some topics have nested
-  subtopics; keep an entry with the most specific appropriate topic.
-- Hosted papers live beside the topic index. `scripts/download.sh` retrieves
-  linked PDFs but is not part of a normal documentation-change check.
-- `.github/CONTRIBUTING.md` is the source of truth for contribution policy;
-  `.github/PULL_REQUEST_TEMPLATE.md` lists the information expected in a PR.
+- 根目录的 `README.md` 介绍本合集,并引导贡献者阅读项目政策。
+- 每个主题目录拥有自己的 `README.md` 索引。部分主题包含嵌套子主题;条目应放在最贴切、最具体的主题下。
+- 托管的论文 PDF 与主题索引放在同一目录。`scripts/download.sh` 用于抓取链接指向的 PDF,但不属于常规文档改动的检查环节。
+- `.github/CONTRIBUTING.md` 是贡献政策的唯一权威来源;`.github/PULL_REQUEST_TEMPLATE.md` 列出了 PR 中应提供的信息。
 
-## Editing paper indexes
+## 编辑论文索引
 
-- Preserve the target README's existing headings, ordering, Markdown style,
-  and level of description. Do not reformat unrelated entries.
-- Add an academic paper, not a book, blog post, or general reference. Include
-  a short explanation of its importance when adding a paper, as required by
-  the contribution guide.
-- Include the publication year with a new listing when it is known.
-- Prefer a stable, direct source link and verify that the link reaches the
-  intended paper before submitting it.
-- Use `:scroll:` for a repository-hosted paper. A hosted paper must also have
-  its source URL recorded in that topic's README.
-- Respect copyright: only add a paper file when its license permits digital
-  redistribution. Otherwise, link to the canonical external source instead.
-- Name new topic directories in lowercase with underscores; name paper files
-  in lowercase with dashes and use the full title where practical.
+- 保留目标 README 原有的标题结构、排序、Markdown 风格和描述详略程度。不要重排无关条目。
+- 只添加学术论文,而不是书籍、博客文章或一般性参考资料。按照贡献指南的要求,新增论文时应附上一段简短的重要性说明。
+- 已知发表年份的新条目应注明年份。
+- 优先使用稳定、直接来源的链接,并在提交前验证链接确实指向目标论文。
+- 仓库托管的论文使用 `:scroll:` 标注。托管论文同时必须在该主题 README 中记录其来源 URL。
+- 尊重版权:仅在其许可协议允许数字再分发时才添加论文文件;否则应链接到权威的外部来源。
+- 新建主题目录使用小写加下划线命名;论文文件使用小写加连字符命名,并尽可能使用完整标题。
 
-## Scripts and validation
+## 脚本与校验
 
-- Run `bash -n scripts/download.sh` after changing the downloader.
-- The CI workflow checks Markdown links with Lychee. For edited entries,
-  manually validate new or changed URLs; run a local Lychee check when it is
-  available rather than treating a successful Markdown parse as link
-  validation.
-- Inspect `git diff --check` and the focused diff before handoff. Confirm that
-  each hosted-paper link resolves to the file committed alongside its README.
-- Do not run `./scripts/download.sh` as a routine check: it traverses the
-  collection, downloads network resources, and can create many PDF files.
-  Use it only when deliberately refreshing a clearly scoped topic.
+- 修改下载脚本后,运行 `bash -n scripts/download.sh` 做语法检查。
+- CI 工作流使用 Lychee 检查 Markdown 链接。对编辑过的条目,应手动验证新增或修改过的 URL;如果本地可用,请运行 Lychee 检查,而不是把 Markdown 解析通过当作链接验证通过。
+- 交付前检查 `git diff --check` 和聚焦的 diff。确认每条托管论文链接都指向与其 README 一同提交的文件。
+- 不要把 `./scripts/download.sh` 当作常规检查来运行:它会遍历整个合集、下载网络资源,并可能生成大量 PDF 文件。只在刻意刷新某个范围明确的话题时使用。
 
-## Change hygiene
+## 改动卫生
 
-- Keep each contribution focused on a paper, topic, link repair, or script
-  maintenance task.
-- Do not modify or remove existing PDFs merely because a downloader finds a
-  different copy.
-- Follow the Code of Conduct and keep PRs ready to squash into one commit, per
-  the contribution guide.
+- 每次贡献应聚焦于一篇论文、一个主题、一处链接修复或一项脚本维护任务。
+- 不要仅仅因为下载器找到了不同的副本,就修改或删除现有 PDF。
+- 遵守行为准则,并按照贡献指南的要求,保持 PR 可以 squash 为单个 commit。
